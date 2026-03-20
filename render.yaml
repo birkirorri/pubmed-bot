@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: pubmed-bot
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false          # you paste the value in Render's dashboard
+    autoDeploy: true
