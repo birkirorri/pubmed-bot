@@ -172,7 +172,7 @@ CSS = """
 #subtitle { text-align: center; color: #888; margin-bottom: 16px; }
 """
 
-with gr.Blocks(css=CSS, title="PubMed Research Bot") as demo:
+with gr.Blocks(title="PubMed Research Bot") as demo:
     gr.Markdown("# 🧬 PubMed Research Bot", elem_id="title")
     gr.Markdown(
         "Ask any biomedical question — I'll search PubMed for recent papers "
@@ -180,7 +180,7 @@ with gr.Blocks(css=CSS, title="PubMed Research Bot") as demo:
         elem_id="subtitle",
     )
 
-    chatbot = gr.Chatbot(elem_id="chatbot", height=520, bubble_full_width=False)
+    chatbot = gr.Chatbot(elem_id="chatbot", height=520)
     status  = gr.Markdown("")
 
     with gr.Row():
@@ -210,4 +210,4 @@ with gr.Blocks(css=CSS, title="PubMed Research Bot") as demo:
     question_box.submit(on_submit, [question_box, state], [chatbot, question_box, status])
 
 if __name__ == "__main__":
-    demo.launch(server_name="0.0.0.0", server_port=int(os.environ.get("PORT", 7860)))
+    demo.launch(server_name="0.0.0.0", server_port=int(os.environ.get("PORT", 7860)), css=CSS)
